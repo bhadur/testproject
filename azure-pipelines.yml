@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'iotgecsp-1'
 
 steps:
 - script: echo Hello, world!
