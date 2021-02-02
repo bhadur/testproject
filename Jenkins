@@ -1,7 +1,7 @@
 pipeline {
   agent { label 'master' }
   stages {
-    stage('Source') { // clone code
+    stage('Source') { // clone the code
       steps {
         // clone code from our Github repository
         git 'https://github.com/bhadur/testproject'
