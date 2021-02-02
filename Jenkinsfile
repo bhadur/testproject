@@ -7,3 +7,4 @@ pipeline {
         git 'https://github.com/bhadur/testproject'
       }
     }
+  }
