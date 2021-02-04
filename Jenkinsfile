@@ -1,3 +1,6 @@
+libraries {
+     lib('pipeline-library-demo')
+ }
 pipeline {
   agent { label 'master' }
   stages {
