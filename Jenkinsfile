@@ -1,4 +1,4 @@
-@Library('pipeline-library-demo') _
+@Library('pipeline-library-demo@master') _
 helloWorld()
 
 pipeline {
