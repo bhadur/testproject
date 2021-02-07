@@ -1,5 +1,5 @@
 #!groovy
-@Library('openvino-jenkins-library@master')_
+@Library('pipeline-library-demo@master')_
 
 pipeline {
   agent { label 'master' }
