@@ -1,4 +1,5 @@
-@Library('pipeline-library-demo@master') _
+@Library('pipeline-library-demo') _
+helloWorld()
 
 pipeline {
   agent { label 'master' }
@@ -8,8 +9,7 @@ pipeline {
       steps {
             echo 'Hello world'
             sayHello 'Dave'
-            helloWorld()
-      }
+        }
     }
   }
 }
