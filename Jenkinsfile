@@ -1,6 +1,8 @@
 #!groovy
 @Library('pipeline-library-demo@master')_
 
+helloWorld()
+
 pipeline {
   agent { label 'master' }
  
