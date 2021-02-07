@@ -1,13 +1,31 @@
-pipeline {
-  agent { label 'master' }
-  libraries {
-        lib('pipeline-library-demo')
-        }  
-  stages {
-    stage('Checkout code') { // clone the github code
-      steps {
-            checkout scm
-      }
-    }
-  }
+#!/usr/bin/env groovy
+
+@Library('shared-library@master') _ //master or whatever branch
+
+pipeline{
+
+      agent {
+                docker {
+                image 'maven'
+                args '-v $HOME/.m2:/root/.m2'
+                }
+            }
+        
+        stages{
+
+              stage('maven build'){
+                  steps{
+                      script{
+		    	                sh "mvn clean install"
+                      	  }
+               	     }  
+                 }	
+                 
+                 stage ('Check logs') {
+                    steps {
+                        filterLogs ('WARNING', 1)
+                    }
+                }
+		
+           }	       	     	         
 }
