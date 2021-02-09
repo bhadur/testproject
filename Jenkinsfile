@@ -6,10 +6,7 @@ pipeline{
 
       agent { label 'master' }
         
-        stages{
-
-              
-                 
+        stages{        
                  stage ('Check logs') {
                     steps {
                         helloWorld ()
