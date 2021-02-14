@@ -1,22 +1,24 @@
-//node {
-//  datas = readYaml file: 'test.yml'
-//}
+def loadValuesYaml(){
+  def valuesYaml = readYaml (file: './test.yml')
+  return valuesYaml;
+}
+
 pipeline {
-  agent { label 'master' }
- 
+  agent {
+    label "master"
+  }
+
+  environment {
+    valuesYaml = loadValuesYaml()
+  }
   stages {
-    stage('Checkout code') { // clone the github code
+    stage('CICD Initialize') {
       steps {
-            checkout scm
+        script{
+          echo valuesYaml
+          println valuesYaml.getClass()
+        }
+        echo valuesYaml.appName.toString()
       }
     }
-    stage('Read YAML file') {
-        steps {
-            customWorkspace 'test.yml'
-            script{ datas = readYaml (file: 'test.yml') }
-            echo datas.ear_file.deploy.toString()
-
-        }
-    }
-  }
 }
