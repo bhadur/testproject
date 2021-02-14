@@ -1,3 +1,6 @@
+node {
+  datas = readYaml file: 'test.yml'
+}
 pipeline {
   agent { label 'master' }
  
