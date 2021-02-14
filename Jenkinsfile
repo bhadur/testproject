@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Read YAML file') {
         steps {
-            customWorkspace '/appl'
+            customWorkspace 'test.yml'
             script{ datas = readYaml (file: 'test.yml') }
             echo datas.ear_file.deploy.toString()
 
