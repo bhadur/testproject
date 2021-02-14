@@ -1,6 +1,3 @@
-#!groovy
-@Library('pipeline-library-demo@master')_
-
 pipeline {
   agent { label 'master' }
  
@@ -9,6 +6,14 @@ pipeline {
       steps {
             checkout scm
       }
+    }
+    stage('Read YAML file') {
+        steps {
+            customWorkspace '/appl'
+            script{ datas = readYaml (file: 'test.yml') }
+            echo datas.ear_file.deploy.toString()
+
+        }
     }
   }
 }
