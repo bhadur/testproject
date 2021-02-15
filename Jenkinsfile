@@ -4,7 +4,11 @@ pipeline {
   }
   
   stages {
+    stage ('Check logs') {
     datas = readYaml file: "test.yml"
     }
+  }
 
 }
+
+ 
