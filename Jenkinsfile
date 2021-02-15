@@ -5,13 +5,12 @@ configObj = ""
 
 pipeline{
     agent any
-    stages{    
-        stage('prepare') {
-
-    configObj = readYaml file : 'config/Test.yaml'
-
-    flowManager  config : configObj
- }
-        
-}
-}
+    stages {
+        stage('Test') { // clone the github code
+            steps {
+            checkout scm
+                configObj = readYaml file : 'config/Test.yaml'
+                flowManager  config : configObj
+            }
+        }
+    }
