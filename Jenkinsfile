@@ -4,12 +4,14 @@
 configObj = ""
 
 pipeline{
-    
-script{
+    agent any
+    stages{    
+        stage('prepare') {
 
     configObj = readYaml file : 'config/Test.yaml'
 
     flowManager  config : configObj
  }
         
+}
 }
