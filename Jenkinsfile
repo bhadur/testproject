@@ -1,8 +1,17 @@
-@Library('piper-library-os') _
+#!/usr/bin/env groovy
 
-node {
+@Library('pipeline-library-demo@master')_ //master or whatever branch
 
-  checkout scm
+pipeline{
 
-  woloxCi('.woloxci/config.yml');
+      agent { label 'master' }
+        
+        stages{        
+                 stage ('Check logs') {
+                    steps {
+                        basm ()
+                    }
+                }
+		
+           }	       	     	         
 }
