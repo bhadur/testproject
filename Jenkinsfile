@@ -9,7 +9,7 @@ pipeline{
         stage('Test') { // clone the github code
             steps {
             
-                def datas = readYaml file: 'config/Test.yaml', text: "something: 'Override'
+                def datas = readYaml file: 'config/Test.yaml'
                 flowManager  config : datas
             }
         }
