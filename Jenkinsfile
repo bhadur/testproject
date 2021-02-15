@@ -1,17 +1,15 @@
 #!/usr/bin/env groovy
+@Library('pipeline-library-demo@master')_
 
-@Library('pipeline-library-demo@master')_ //master or whatever branch
+configObj = ""
 
 pipeline{
+    ...
+script{
 
-      agent { label 'master' }
-        
-        stages{        
-                 stage ('Check logs') {
-                    steps {
-                        basm ()
-                    }
-                }
-		
-           }	       	     	         
+    configObj = readYaml file : 'config/Test.yaml'
+
+    flowManager  config : configObj
+ }
+       ...    
 }
