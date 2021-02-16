@@ -1,0 +1,4 @@
+ steps:
+  - script: |
+      whoami
+      echo "hello"

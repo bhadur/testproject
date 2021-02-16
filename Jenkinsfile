@@ -1,13 +1,14 @@
 pipeline {
-  agent { label 'master' }
-  libraries {
-        lib('pipeline-library-demo')
-        }  
+  agent {
+    label "master"
+  }
+  
   stages {
-    stage('Checkout code') { // clone the github code
-      steps {
-            checkout scm
-      }
+    stage ('Check logs') {
+    datas = readYaml file: "test.yml"
     }
   }
+
 }
+
+ 
