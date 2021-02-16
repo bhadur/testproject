@@ -1,12 +1,17 @@
+#!groovy
+@Library('pipeline-library-demo@master')_
+
+stage('Check Status') {
+    helloWorld()
+}
+
 pipeline {
   agent { label 'master' }
-  libraries {
-        lib('pipeline-library-demo')
-        }  
+ 
   stages {
-    stage('Checkout code') { // clone the github code
+    stage('Call') { // clone the github code
       steps {
-            checkout scm
+            helloWorld()
       }
     }
   }
