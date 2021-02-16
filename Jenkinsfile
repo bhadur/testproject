@@ -1,13 +1,25 @@
+def loadValuesYaml(){
+  def valuesYaml = readYaml (file: './test.yml')
+  return valuesYaml;
+}
+
 pipeline {
-  agent { label 'master' }
-  libraries {
-        lib('pipeline-library-demo')
-        }  
+  agent {
+    label "master"
+  }
+
+  environment {
+    valuesYaml = loadValuesYaml()
+  }
   stages {
-    stage('Checkout code') { // clone the github code
+    stage('CICD Initialize') {
       steps {
-            checkout scm
+        script{
+          echo valuesYaml
+          println valuesYaml.getClass()
+        }
+        echo valuesYaml.appName.toString()
       }
     }
-  }
+}
 }
