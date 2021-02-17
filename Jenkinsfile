@@ -27,22 +27,13 @@ node {
   stage("Prepare") {
     checkout scm
     sh 'git submodule sync'
-    sh 'git submodule update --init --recursive'
-    setGitEnvironmentVariables()
-    // Set UID to jenkins
-    env['UID'] = sh(returnStdout: true, script: 'id -u jenkins').trim()
     // Prepare for junit test results
     sh "mkdir -p test_results"
     sh "rm -f test_results/*.xml"
 
     // When checking in a file exists in another directory start with './' or
     // prepare to fail.
-    try {
-      if (fileExists("./Jenkinsfiles/${env.default}.groovy") || fileExists("./Jenkinsfiles/${env.BRANCH_NAME}.yml")) {
-        loadBranch(env.BRANCH_NAME)
-      } else {
-        loadBranch("default")
-      }
+    loadBranch("default")
     }
     finally {
       if (findFiles(glob: 'test_results/*.xml')) {
