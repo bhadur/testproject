@@ -34,7 +34,7 @@ node {
     // When checking in a file exists in another directory start with './' or
     // prepare to fail.
     loadBranch("default")
-    }
+    
     finally {
       if (findFiles(glob: 'test_results/*.xml')) {
         junit 'test_results/*.xml'
