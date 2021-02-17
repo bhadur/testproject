@@ -13,13 +13,8 @@ def loadBranch(String branch) {
   if (config && config.pipeline && config.pipeline.enabled == false) {
     println "Pipeline disabled."
   } else {
-    if (config && config.pipeline && config.pipeline.script) {
-      println "Loading ./Jenkinsfiles/${config.pipeline.script}.groovy"
-      load "./Jenkinsfiles/${config.pipeline.script}.groovy"
-    } else {
-      println "Loading ./Jenkinsfiles/default.groovy"
-      load "./Jenkinsfiles/default.groovy"
-    }
+     println "Pipeline enabled."
+   
   }
 }
 
