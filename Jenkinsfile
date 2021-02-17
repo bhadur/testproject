@@ -35,10 +35,6 @@ node {
     // prepare to fail.
     loadBranch("default")
     
-    finally {
-      if (findFiles(glob: 'test_results/*.xml')) {
-        junit 'test_results/*.xml'
-      }
-    }
+    
   }
 }
