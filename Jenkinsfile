@@ -1,13 +1,17 @@
-pipeline {
-  agent { label 'master' }
-  libraries {
-        lib('pipeline-library-demo')
-        }  
-  stages {
-    stage('Checkout code') { // clone the github code
-      steps {
-            checkout scm
-      }
-    }
-  }
+#!/usr/bin/env groovy
+
+@Library('pipeline-library-demo@master')_ //master or whatever branch
+
+pipeline{
+
+      agent { label 'master' }
+        
+        stages{        
+                 stage ('Check logs') {
+                    steps {
+                        helloWorld ()
+                    }
+                }
+		
+           }	       	     	         
 }
